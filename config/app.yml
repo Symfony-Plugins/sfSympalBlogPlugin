@@ -1,0 +1,4 @@
+all:
+  sympal_settings:
+    BlogPost:
+      enable_comments: true

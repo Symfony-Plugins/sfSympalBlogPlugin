@@ -1,0 +1,6 @@
+---
+BlogPost:
+  actAs: [sfSympalEntityType]
+  columns:
+    title: string(255)
+    teaser: clob
