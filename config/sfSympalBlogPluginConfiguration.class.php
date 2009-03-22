@@ -1,7 +1,7 @@
 <?php
 class sfSympalBlogPluginConfiguration extends sfPluginConfiguration
 {
-  public 
+  public static
     $dependencies = array(
       'sfSympalPlugin',
       'sfSympalSecurityPlugin',
