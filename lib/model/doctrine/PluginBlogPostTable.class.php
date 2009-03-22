@@ -26,6 +26,7 @@ class PluginBlogPostTable extends Doctrine_Table
       ->innerJoin('p.User u2')
       ->innerJoin('u2.CreatedEntities ce')
       ->innerJoin('ce.Type t WITH t.name = ?', 'BlogPost')
+      ->groupBy('e.id')
       ->limit($num);
 
     return $q->execute();
