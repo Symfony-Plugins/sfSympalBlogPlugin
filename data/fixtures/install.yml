@@ -5,8 +5,8 @@ ContentType:
     name: BlogPost
     label: BlogPost
     slug: blog
-    list_route_url: /blog/list
-    view_route_url: /blog/:slug
+    list_path: /blog/list
+    view_path: /blog/:slug
 
 Content:
   BlogPost_content_sample:
@@ -41,6 +41,6 @@ MenuItem:
         name: Blog
         is_published: true
         label: Blog
-        has_many_content: true
+        is_content_type_list: true
         Site: Site_default
         ContentType: ContentType_blog

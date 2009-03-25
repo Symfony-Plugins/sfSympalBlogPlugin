@@ -20,7 +20,7 @@ class sfSympalBlogPluginConfiguration extends sfPluginConfiguration
     $menuItem->is_published = true;
     $menuItem->label = 'Blog';
     $menuItem->ContentType = $installVars['contentType'];
-    $menuItem->has_many_content = true;
+    $menuItem->is_content_type_list = true;
 
     $invoker->addToMenu($menuItem);
 
