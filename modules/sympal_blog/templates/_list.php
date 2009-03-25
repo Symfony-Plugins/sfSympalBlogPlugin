@@ -6,9 +6,9 @@
   <div id="list">
     <h2>Sympal Blog</h2>
 
-    <?php echo get_partial('sympal_blog/blog_list', array('menuItem' => $menuItem, 'pager' => $pager, 'entities' => $entities)) ?>
+    <?php echo get_partial('sympal_blog/blog_list', array('menuItem' => $menuItem, 'pager' => $pager, 'content' => $content)) ?>
 
-    <?php echo link_to('Create New', '@sympal_entities_create_type?type='.$menuItem->EntityType->getSlug()) ?>
+    <?php echo link_to('Create New', '@sympal_content_create_type?type='.$menuItem->ContentType->getSlug()) ?>
   </div>
 </div>
 

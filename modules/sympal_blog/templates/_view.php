@@ -1,24 +1,24 @@
 <?php use_stylesheet('/sfSympalBlogPlugin/css/blog.css') ?>
 
-<?php echo get_sympal_breadcrumbs($menuItem, $entity) ?>
+<?php echo get_sympal_breadcrumbs($menuItem, $content) ?>
 
 <div id="sympal_blog">
   <div id="view">
-    <h2><?php echo $entity->getHeaderTitle() ?></h2>
+    <h2><?php echo $content->getHeaderTitle() ?></h2>
 
-    <?php echo image_tag($entity->CreatedBy->Profile->getGravatarUrl(), 'align=right') ?>
+    <?php echo image_tag($content->CreatedBy->Profile->getGravatarUrl(), 'align=right') ?>
 
     <p>
       <strong>
-        Posted by <?php echo link_to($entity->CreatedBy->username, $entity->CreatedBy->Profile->Entity->getRoute()) ?> on 
-        <?php echo date('m/d/Y h:i:s', strtotime($entity->created_at)) ?>
+        Posted by <?php echo link_to($content->CreatedBy->username, $content->CreatedBy->Profile->Content->getRoute()) ?> on 
+        <?php echo date('m/d/Y h:i:s', strtotime($content->created_at)) ?>
       </strong>
     </p>
 
-    <?php echo sympal_entity_slot($entity, 'body', 'Markdown') ?>
+    <?php echo get_sympal_content_slot($content, 'body', 'Markdown') ?>
   </div>
 
-  <?php echo get_sympal_comments($entity) ?>
+  <?php echo get_sympal_comments($content) ?>
 </div>
 
 <?php slot('sympal_right_sidebar') ?>

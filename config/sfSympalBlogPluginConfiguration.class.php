@@ -10,32 +10,32 @@ class sfSympalBlogPluginConfiguration extends sfPluginConfiguration
 
   public function install($installVars, $invoker)
   {
-    $installVars['entity']['BlogPost']['title'] = 'Sample Sympal Blog Post';
-    $installVars['entity']['BlogPost']['teaser'] = 'This is the teaser line for the sample blog post';
-    $installVars['entity']->save();
-    $installVars['entityType']->save();
+    $installVars['content']['BlogPost']['title'] = 'Sample Sympal Blog Post';
+    $installVars['content']['BlogPost']['teaser'] = 'This is the teaser line for the sample blog post';
+    $installVars['content']->save();
+    $installVars['contentType']->save();
 
     $menuItem = new MenuItem();
     $menuItem->name = 'Blog';
     $menuItem->is_published = true;
     $menuItem->label = 'Blog';
-    $menuItem->EntityType = $installVars['entityType'];
-    $menuItem->has_many_entities = true;
+    $menuItem->ContentType = $installVars['contentType'];
+    $menuItem->has_many_content = true;
 
     $invoker->addToMenu($menuItem);
 
-    $entityTemplate = new EntityTemplate();
-    $entityTemplate->name = 'View BlogPost';
-    $entityTemplate->type = 'View';
-    $entityTemplate->EntityType = $installVars['entityType'];
-    $entityTemplate->partial_path = 'sympal_blog/view';
-    $entityTemplate->save();
+    $contentTemplate = new ContentTemplate();
+    $contentTemplate->name = 'View BlogPost';
+    $contentTemplate->type = 'View';
+    $contentTemplate->ContentType = $installVars['contentType'];
+    $contentTemplate->partial_path = 'sympal_blog/view';
+    $contentTemplate->save();
 
-    $entityTemplate = new EntityTemplate();
-    $entityTemplate->name = 'List BlogPost';
-    $entityTemplate->type = 'List';
-    $entityTemplate->EntityType = $installVars['entityType'];
-    $entityTemplate->partial_path = 'sympal_blog/list';
-    $entityTemplate->save();
+    $contentTemplate = new ContentTemplate();
+    $contentTemplate->name = 'List BlogPost';
+    $contentTemplate->type = 'List';
+    $contentTemplate->ContentType = $installVars['contentType'];
+    $contentTemplate->partial_path = 'sympal_blog/list';
+    $contentTemplate->save();
   }
 }

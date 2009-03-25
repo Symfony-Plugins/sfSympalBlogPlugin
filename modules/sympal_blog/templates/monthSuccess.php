@@ -6,9 +6,9 @@
   <div id="list">
     <h2>Posts for the month of <?php echo $date ?></h2>
 
-    <?php echo get_partial('sympal_blog/blog_list', array('pager' => $pager, 'menuItem' => $menuItem, 'entities' => $entities)) ?>
+    <?php echo get_partial('sympal_blog/blog_list', array('pager' => $pager, 'menuItem' => $menuItem, 'content' => $content)) ?>
 
-    <?php echo link_to('Create New', '@sympal_entities_create_type?type='.$menuItem->EntityType->getSlug()) ?>
+    <?php echo link_to('Create New', '@sympal_content_create_type?type='.$menuItem->ContentType->getSlug()) ?>
   </div>
 </div>
 

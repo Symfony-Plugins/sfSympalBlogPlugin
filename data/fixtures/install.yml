@@ -1,38 +1,38 @@
 # sfSympalBlogPlugin install data fixtures
 
-EntityType:
-  EntityType_blog:
+ContentType:
+  ContentType_blog:
     name: BlogPost
     label: BlogPost
     slug: blog
     list_route_url: /blog/list
     view_route_url: /blog/:slug
 
-Entity:
-  BlogPost_entity_sample:
-    Type: EntityType_blog
+Content:
+  BlogPost_content_sample:
+    Type: ContentType_blog
     slug: sample-blog
     Site: Site_default
     is_published: true
     CreatedBy: admin
 
-EntityTemplate:
-  EntityTemplate_ViewBlogPost:
+ContentTemplate:
+  ContentTemplate_ViewBlogPost:
     name: View BlogPost
     type: View
-    EntityType: EntityType_blog
+    ContentType: ContentType_blog
     partial_path: sympal_blog/view
-  EntityTemplate_ListBlogPost:
+  ContentTemplate_ListBlogPost:
     name: List BlogPost
     type: List
-    EntityType: EntityType_blog
+    ContentType: ContentType_blog
     partial_path: sympal_blog/list
 
 BlogPost:
   BlogPost_sample:
     title: Sample BlogPost
-    teaser: This is some sample content for the teaser your new entity type.
-    Entity: BlogPost_entity_sample
+    teaser: This is some sample content for the teaser your new content type.
+    Content: BlogPost_content_sample
 
 MenuItem:
   MenuItem_primary:
@@ -41,6 +41,6 @@ MenuItem:
         name: Blog
         is_published: true
         label: Blog
-        has_many_entities: true
+        has_many_content: true
         Site: Site_default
-        EntityType: EntityType_blog
+        ContentType: ContentType_blog

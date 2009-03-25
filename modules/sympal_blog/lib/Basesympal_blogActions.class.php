@@ -16,6 +16,6 @@ abstract class Basesympal_blogActions extends sfActions
     $this->month = $request->getParameter('m');
     $this->year = $request->getParameter('y');
     $this->pager = Doctrine::getTable('BlogPost')->retrieveBlogMonth($this->month, $this->year);
-    $this->entities = $this->pager->getResults();
+    $this->content = $this->pager->getResults();
   }
 }

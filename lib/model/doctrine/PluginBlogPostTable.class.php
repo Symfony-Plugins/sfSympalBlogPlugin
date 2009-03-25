@@ -6,7 +6,7 @@ class PluginBlogPostTable extends Doctrine_Table
 {
   public function retrieveLatestPosts($num)
   {
-    $q = Doctrine::getTable('Entity')
+    $q = Doctrine::getTable('Content')
       ->getTypeQuery('BlogPost')
       ->orderBy('e.date_published DESC')
       ->limit($num);
@@ -18,13 +18,13 @@ class PluginBlogPostTable extends Doctrine_Table
   {
     Doctrine::getTable('UserProfile');
 
-    $q = Doctrine::getTable('Entity')
+    $q = Doctrine::getTable('Content')
       ->createQuery('e')
       ->select('*, count(ce.id) as num_posts')
       ->innerJoin('e.Type t2')
       ->innerJoin('e.UserProfile p')
       ->innerJoin('p.User u2')
-      ->innerJoin('u2.CreatedEntities ce')
+      ->innerJoin('u2.CreatedContent ce')
       ->innerJoin('ce.Type t WITH t.name = ?', 'BlogPost')
       ->groupBy('e.id')
       ->limit($num);
@@ -46,13 +46,13 @@ class PluginBlogPostTable extends Doctrine_Table
 
     Doctrine::getTable('BlogPost');
 
-    $q = Doctrine::getTable('Entity')
+    $q = Doctrine::getTable('Content')
       ->createQuery('e')
       ->innerJoin('e.BlogPost p')
       ->innerJoin('e.Type t2')
       ->where('e.date_published > ? AND e.date_published < ?', $dates);
     
-    $pager = new sfDoctrinePager('Entity', sfSympalConfig::get('rows_per_page'));
+    $pager = new sfDoctrinePager('Content', sfSympalConfig::get('rows_per_page'));
     $pager->setQuery($q);
     $pager->init();
 
