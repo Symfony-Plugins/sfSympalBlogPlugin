@@ -16,17 +16,12 @@ class PluginBlogPostTable extends Doctrine_Table
 
   public function retrieveTopAuthors($num)
   {
-    Doctrine::getTable('UserProfile');
-
-    $q = Doctrine::getTable('Content')
-      ->createQuery('e')
-      ->select('*, count(ce.id) as num_posts')
-      ->innerJoin('e.Type t2')
-      ->innerJoin('e.UserProfile p')
-      ->innerJoin('p.User u2')
-      ->innerJoin('u2.CreatedContent ce')
-      ->innerJoin('ce.Type t WITH t.name = ?', 'BlogPost')
-      ->groupBy('e.id')
+    $q = Doctrine::getTable('User')
+      ->createQuery('u')
+      ->select('*, count(uc.id) as num_posts')
+      ->innerJoin('u.CreatedContent uc')
+      ->innerJoin('uc.Type t WITH t.name = ?', 'BlogPost')
+      ->groupBy('u.id')
       ->limit($num);
 
     return $q->execute();

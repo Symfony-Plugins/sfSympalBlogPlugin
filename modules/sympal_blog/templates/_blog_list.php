@@ -7,10 +7,10 @@
 <?php foreach ($content as $content): ?>
   <div class="row">
     <h3><?php echo link_to($content, $content->getRoute()) ?></h3>
-    <?php echo image_tag($content->CreatedBy->Profile->getGravatarUrl(), 'align=right') ?>
+    <?php echo image_tag($content->CreatedBy->getGravatarUrl(), 'align=right') ?>
     <p class="date">
       <strong>
-        Posted by <?php echo link_to($content->CreatedBy->username, $content->CreatedBy->Profile->Content->getRoute()) ?> on 
+        Posted by <?php echo $content->CreatedBy->getName() ?> on 
         <?php echo date('m/d/Y h:i:s', strtotime($content->created_at)) ?>
       </strong>
     </p>

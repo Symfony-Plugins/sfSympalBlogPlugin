@@ -6,7 +6,7 @@
   <div id="view">
     <h2><?php echo get_sympal_column_content_slot($content, 'title') ?></h2>
 
-    <?php echo image_tag($content->CreatedBy->Profile->getGravatarUrl(), 'align=right') ?>
+    <?php echo image_tag($content->CreatedBy->getGravatarUrl(), 'align=right') ?>
 
     <p>
       <strong>
@@ -23,7 +23,9 @@
     <?php echo get_sympal_content_slot($content, 'body', 'Markdown') ?>
   </div>
 
-  <?php echo get_sympal_comments($content) ?>
+  <?php if (sfSympalConfig::get('sfSympalCommentsPlugin', 'enabled') && sfSympalConfig::get('BlogPost', 'enable_comments')): ?>
+    <?php echo get_sympal_comments($content) ?>
+  <?php endif; ?>
 </div>
 
 <?php slot('sympal_right_sidebar') ?>

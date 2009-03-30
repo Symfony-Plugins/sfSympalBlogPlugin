@@ -9,8 +9,8 @@
 <h2>Top 5 Authors</h2>
 
 <ul>
-  <?php foreach ($authors as $content): ?>
-    <li><?php echo link_to($content, $content->getRoute()) ?> (<?php echo $content->num_posts ?>)</li>
+  <?php foreach ($authors as $author): ?>
+    <li><?php echo $author->getName() ?> (<?php echo $author->num_posts ?>)</li>
   <?php endforeach; ?>
 </ul>
 
