@@ -4,19 +4,19 @@
 
 <div id="sympal_blog">
   <div id="view">
-    <h2><?php echo get_sympal_column_content_slot($content, 'title', 'Text', 'span') ?></h2>
+    <h2><?php echo get_sympal_column_content_slot($content, 'title') ?></h2>
 
     <?php echo image_tag($content->CreatedBy->Profile->getGravatarUrl(), 'align=right') ?>
 
     <p>
       <strong>
-        Posted by <?php echo link_to($content->CreatedBy->username, $content->CreatedBy->Profile->Content->getRoute()) ?> on 
-        <?php echo get_sympal_column_content_slot($content, 'date_published', 'Text', 'span') ?>
+        Posted by <?php echo get_sympal_column_content_slot($content, 'created_by', 'link_to_blog_post_author') ?> on 
+        <?php echo get_sympal_column_content_slot($content, 'date_published') ?>
       </strong>
     </p>
 
     <?php if (sfSympalToolkit::isEditMode()): ?>
-      <?php echo get_sympal_column_content_slot($content, 'teaser', 'MultiLineText') ?>
+      <?php echo get_sympal_column_content_slot($content, 'teaser') ?>
       <hr/>
     <?php endif; ?>
 
